@@ -1,0 +1,126 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(130, 224, 255) rgb(241, 245, 247);
+    font-family: 'Montserrat Alternates', sans-serif;
+    /* box-sizing: border-box; */
+}
+
+body {
+    /* font: 13px Helvetica, Arial; */
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    bottom: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: rgb(28, 53, 61);
+    padding: 5px;
+    flex-basis: 100%;
+}
+
+form input {
+    border: 0;
+    border-radius: 1em;
+    padding: 10px;
+    width: 90%;
+    margin-right: 0.5%;
+}
+
+.send_message {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: 0;
+    border-radius: 1em;
+    padding: 10px;
+    margin-right: 0.1%;
+}
+
+#chat {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    /* position: fixed; */
+    max-height: 100%;
+    width: auto;
+}
+
+.intrct {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    /* border: 5px solid rgb(28, 53, 61); */
+    margin-bottom: 1px;
+    height: 100%;
+    width: auto;
+}
+
+#chatview {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    border: 5px solid rgb(28, 53, 61);
+    height: 100%;
+    width: 80%;
+}
+
+.users {
+    padding: 10px;
+    background-color: rgb(179, 219, 233);
+    border: 5px solid rgb(28, 53, 61);
+    border-left: 0;
+    height: 100%;
+    width: 25%;
+    text-align: center;
+}
+
+#usernames {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.chatbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: flex-end;
+    margin-top: 5px;
+    /* height: auto; */
+    width: 100%;
+}
+
+#messages {
+    word-wrap: break-word; 
+    word-break: break-word;
+    list-style-type: none;
+    background-color: #ffffff;
+    /* margin: 0; */
+    padding: 5px;
+}
+
+#messages li {
+    padding: 5px 10px;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgb(241, 245, 247);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(52, 118, 139);
+    border-radius: 0.5em;
+    border: 2px solid rgb(241, 245, 247);
+}

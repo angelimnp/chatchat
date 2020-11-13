@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="chat">
+      <div class="intrct">
+        <div id="chatview">
+          <ul id="messages"></ul>
+        </div>
+        <div class="users">
+          <h2>Users</h2>
+          <ul id="usernames">
+          </ul>
+        </div>
+      </div>
+      <div class="chatbox">
+        <form action="">
+          <input id="m" autocomplete="off" placeholder="Message..." />
+          <button class="send_message">Send</button>
+        </form>
+      </div>
+    </div>
+    
+    <script src="chat.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+  </body>
+</html>
