@@ -1,18 +1,8 @@
 window.addEventListener('load', main);
 
-// const COLORS = ['#7b2ee0', '#e21440', '#f8a700',
-//     '#206107', '#0076bf', '#d8247c', '#93c7c3',
-//     '#e86325', '#6f7179', '#5d4122'];
-
 const msgs = [];
 
 const uh = document.getElementById("chatview");
-
-// function getcolor(number) {
-//     // const rand = Math.floor(Math.random()*COLORS.length);
-//     let rand = number-1;
-//     return COLORS[rand];
-// }
 
 function prep() {
   if (window.matchMedia("(max-width: 960px)").matches) {
@@ -35,7 +25,6 @@ function chatload() {
       e.preventDefault(); // prevents page reloading
       var str = $('#m').val();
       checkMsg(str);
-         // socket.emit('chat_message', str);
       $('#m').val('');
       return false;
     });
@@ -69,9 +58,7 @@ function chatload() {
       if(string.substring(5, 6) === " ") {
           username = string.substring(6).trim();
           if(username === '') return;
-          // console.log(username);
           window.localStorage.setItem('user', username);
-          // console.log('changed ' + username);
           socket.emit('change_user', username);
         }
         else { 
@@ -90,7 +77,6 @@ function chatload() {
             color = string.substring(7).trim();
             if(/^[0-9A-F]{6}$/i.test(color)) {
               socket.emit('change_color', color);
-              // console.log(color);
             }
           }
         }
@@ -110,7 +96,6 @@ function chatload() {
       b = b.replaceAll("<3", "&#128151;");
       b = b.replaceAll(/:uwu:/gi, "&#129402;");
       b = b.replaceAll(";)", "&#128521;");
-      // console.log(b);
       return(b);
     }
 
@@ -125,7 +110,6 @@ function chatload() {
         var $unmsg = $('<li class="content"/>')
           .append($uname, $mssg);
         $('#messages').append($unmsg);
-        // console.log($unmsg.text());
         }
       );
     });
@@ -140,7 +124,6 @@ function chatload() {
       var $unmsg = $('<li class="content"/>')
         .append($uname, $mssg);
       $('#messages').append($unmsg);
-      // saveMsgs($unsmg);
       uh.scrollTop = uh.scrollHeight;
     });
         
@@ -155,53 +138,17 @@ function chatload() {
         .append($uname, $mssg)
         .css('background', '#deeef3');
       $('#messages').append($unmsg);
-      // saveMsgs($unmsg);
       uh.scrollTop = uh.scrollHeight;
     });
-
-    // socket.on('enter', function(user) {
-    //   let name = window.localStorage.getItem('user');
-    //   if(name === null) {
-    //     window.localStorage.setItem('user', user.uname);
-    //     name = window.localStorage.getItem('user');
-    //     setName(name);
-    //   }
-    //   if(user.ppl.indexOf(name) !== -1) {
-    //     // let uname = user.uname;
-    //     window.localStorage.setItem('user', user.uname);
-    //     name = window.localStorage.getItem('user');
-    //     setName(name);
-    //   }
-    //   const ind = user.ppl.indexOf(user.usname);
-    //   user.usname = name;
-    //   user.ppl.splice(ind, 1, user.usname);
-
-    //   $('#usernames').empty();
-    //   user.ppl.forEach((username) => {
-    //     $('#usernames').append($('<li>').text(username));
-    //   });
-    //   console.log(name);
-
-    // });
-
-    // const setName = (nem) => {
-    //   socket.emit('enter', nem);
-    //   console.log('woop');
-    //   console.log(nem);
-    // }
-
 
     socket.on('enter', function(user) {
       let name = window.localStorage.getItem('user');
       let send = "";
       let cnt = user.ppl.filter(n => n === name).length;
-      // console.log(cnt);
-      // console.log(name + ":p");
       if(name === null) {
         window.localStorage.setItem('user', user.usname);
         name = window.localStorage.getItem('user');
         send = "/name " + name;
-        // console.log("oh");
         checkMsg(send);
       }
       if(cnt > 1) {
@@ -211,7 +158,6 @@ function chatload() {
         checkMsg(send);
       }
       send = "/name " + name;
-      // console.log(send);
       checkMsg(send);
     });
 
@@ -234,13 +180,11 @@ function chatload() {
       $('#usernames').empty();
       user.ppl.forEach((username) => {
         $('#usernames').append($('<li>').text(username));
-        // console.log(username);
       });
     });
 
     socket.on('change_color', function(col) {
       $('.username' + col.idt).css({'color': '#'+col.colr, 'font-weight':'Bold'});
-      // console.log(col.colr);
     });
 
     socket.on('rem_user', function(user) {
